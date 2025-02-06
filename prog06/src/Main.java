@@ -1,6 +1,6 @@
 /**
- * @author Álvaro Almécija
  * Clase Main que ejecuta el menú principal de la clase Principal
+ * @author Álvaro Almécija
  * @see Principal
  */
 public class Main {

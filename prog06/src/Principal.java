@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 /**
- * @author Álvaro Almécija
  * Clase Principal que presenta el menú del programa por consola y gestiona un concesionario
+ * @author Álvaro Almécija
  * @see Concesionario
  */
 public class Principal {

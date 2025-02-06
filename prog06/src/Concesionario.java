@@ -1,7 +1,7 @@
 /**
- * @author Álvaro Almécija
  * Clase concesionario que contiene una colección de vehículos en venta
- * @see Vehículo
+ * @author Álvaro Almécija
+ * @see Vehiculo
  */
 public class Concesionario {
     

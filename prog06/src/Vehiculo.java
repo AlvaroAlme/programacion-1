@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 
 /**
+ * Clase Vehículo que contiene la representación de un vehículo en venta y su propietario.
  * @author Álvaro Almécija
- * Clase Vehículo que contiene la representación de un vehículo en venta y su propietario
  */
 public class Vehiculo {
 
