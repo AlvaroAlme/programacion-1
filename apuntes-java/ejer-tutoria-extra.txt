@@ -1,0 +1,174 @@
+import java.util.*;
+import java.util.regex.*;
+
+// Enumeraciones
+enum Estado { DISPONIBLE, VENDIDO; }
+enum TipoCombustible { GASOLINA, DIESEL, HÍBRIDO, ELÉCTRICO; }
+enum Traccion { DELANTERA, TRASERA, _4X4; }
+enum NivelConfort { BÁSICO, MEDIO, PREMIUM; }
+enum TipoTransmision { MANUAL, AUTOMÁTICA; }
+
+// Interfaz para depreciación
+interface Valorable {
+    double calcularDepreciacion();
+}
+
+// Clase Persona
+class Persona {
+    String nombre;
+    String dni;
+    int anioNacimiento;
+    int anioCarnet;
+
+    public Persona(String nombre, String dni, int anioNacimiento, int anioCarnet) {
+        this.nombre = nombre;
+        this.dni = dni;
+        this.anioNacimiento = anioNacimiento;
+        this.anioCarnet = anioCarnet;
+    }
+
+    public int obtenerAniosExperiencia(int anioActual) {
+        return anioActual - this.anioCarnet;
+    }
+}
+
+// Clase Vehículo
+abstract class Vehiculo implements Valorable {
+    String matricula;
+    String marca;
+    String modelo;
+    int anioFabricacion;
+    int kilometraje;
+    double precio;
+    Estado estado;
+    Persona propietario;
+
+    public Vehiculo(String matricula, String marca, String modelo, int anioFabricacion, int kilometraje, double precio) {
+        if (!matricula.matches("^[A-Z0-9]{4,7}$")) {
+            throw new IllegalArgumentException("Matrícula inválida");
+        }
+        this.matricula = matricula;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anioFabricacion = anioFabricacion;
+        this.kilometraje = kilometraje;
+        this.precio = precio;
+        this.estado = Estado.DISPONIBLE;
+        this.propietario = null;
+    }
+
+    public void asignarPropietario(Persona persona) {
+        this.propietario = persona;
+        this.estado = Estado.VENDIDO;
+    }
+
+    public abstract double calcularDepreciacion();
+}
+
+// Subclase Coche
+class Coche extends Vehiculo {
+    int numPuertas;
+    TipoCombustible tipoCombustible;
+    int capacidadMaletero;
+    Traccion traccion;
+
+    public Coche(String matricula, String marca, String modelo, int anioFabricacion, int kilometraje, double precio, int numPuertas, TipoCombustible tipoCombustible, int capacidadMaletero, Traccion traccion) {
+        super(matricula, marca, modelo, anioFabricacion, kilometraje, precio);
+        this.numPuertas = numPuertas;
+        this.tipoCombustible = tipoCombustible;
+        this.capacidadMaletero = capacidadMaletero;
+        this.traccion = traccion;
+    }
+
+    @Override
+    public double calcularDepreciacion() {
+        return this.kilometraje * 0.8;
+    }
+}
+
+// Clase Principal para la gestión del concesionario
+public class Concesionario {
+    private static List<Vehiculo> vehiculos = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        int opcion;
+        do {
+            System.out.println("\nConcesionario APP");
+            System.out.println("1. Registrar Vehículo");
+            System.out.println("2. Listar Vehículos");
+            System.out.println("3. Buscar Vehículo");
+            System.out.println("4. Asignar Vehículo");
+            System.out.println("5. Resumen Riesgo");
+            System.out.println("6. Calcular Depreciación");
+            System.out.println("7. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+            
+            switch (opcion) {
+                case 1: registrarVehiculo(); break;
+                case 2: listarVehiculos(); break;
+                case 3: buscarVehiculo(); break;
+                case 4: asignarVehiculo(); break;
+                case 5: resumenRiesgo(); break;
+                case 6: calcularDepreciacion(); break;
+                case 7: System.out.println("Saliendo..."); break;
+                default: System.out.println("Opción inválida.");
+            }
+        } while (opcion != 7);
+    }
+    
+    private static void registrarVehiculo() {
+        System.out.print("Matrícula: ");
+        String matricula = scanner.nextLine();
+        System.out.print("Marca: ");
+        String marca = scanner.nextLine();
+        System.out.print("Modelo: ");
+        String modelo = scanner.nextLine();
+        System.out.print("Año de fabricación: ");
+        int anio = scanner.nextInt();
+        System.out.print("Kilometraje: ");
+        int km = scanner.nextInt();
+        System.out.print("Precio: ");
+        double precio = scanner.nextDouble();
+        scanner.nextLine(); // Limpiar buffer
+        
+        Coche coche = new Coche(matricula, marca, modelo, anio, km, precio, 5, TipoCombustible.GASOLINA, 500, Traccion.DELANTERA);
+        vehiculos.add(coche);
+        System.out.println("Vehículo registrado con éxito.");
+    }
+
+    private static void listarVehiculos() {
+        for (Vehiculo v : vehiculos) {
+            System.out.println(v.marca + " " + v.modelo + " - " + v.matricula);
+        }
+    }
+    
+    private static void buscarVehiculo() {
+        System.out.print("Ingrese la matrícula: ");
+        String matricula = scanner.nextLine();
+        for (Vehiculo v : vehiculos) {
+            if (v.matricula.equals(matricula)) {
+                System.out.println("Vehículo encontrado: " + v.marca + " " + v.modelo);
+                return;
+            }
+        }
+        System.out.println("Vehículo no encontrado.");
+    }
+    
+    private static void asignarVehiculo() {
+        System.out.print("Matrícula del vehículo: ");
+        String matricula = scanner.nextLine();
+        for (Vehiculo v : vehiculos) {
+            if (v.matricula.equals(matricula)) {
+                System.out.print("Nombre del propietario: ");
+                String nombre = scanner.nextLine();
+                v.asignarPropietario(new Persona(nombre, "12345678A", 1985, 2005));
+                System.out.println("Vehículo asignado.");
+                return;
+            }
+        }
+        System.out.println("Vehículo no encontrado.");
+    }
+}

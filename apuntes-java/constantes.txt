@@ -1,0 +1,89 @@
+Implementar una clase llamada Circulo. Definir una constante donde se debe almacenar el valor de PI (relación entre la longitud de una circunferencia y su diámetro). Además definir otro atributo donde almacenar el radio del círculo.
+Al constructor debe llegar el radio y otro método debe retornar el perímetro.
+
+public class Circulo {
+    private final double PI = 3.14159265358979323846;
+    private double radio;
+
+    public Circulo(double radio) {
+        this.radio = radio;
+    }
+
+    public double retornarPerimetro() {
+        return 2 * PI * radio;
+    }
+
+    public static void main(String[] ar) {
+        Circulo circulo1 = new Circulo(5);
+        System.out.println(circulo1.retornarPerimetro());
+    }
+}
+
+Implementar una clase llamada CajaDeAhorro. Se debe almacenar el número de documento del titular y el monto depositado. 
+Una vez que se carga el documento no permitir su cambio.
+Plantear dos constructores uno que llegue el documento del titular y el monto a depositar, y un segundo constructor que solo llegue el documento
+
+public class CajaDeAhorro {
+	private final String documento;
+	private float monto;
+
+	public CajaDeAhorro(String documento, float monto) {
+		this.documento = documento;
+		this.monto = monto;
+	}
+
+	public CajaDeAhorro(String documento) {
+		this.documento = documento;
+		this.monto = 0;
+	}
+
+	public void imprimir() {
+		System.out.println("Documento:" + documento + "  Saldo:" + monto);
+	}
+
+	public static void main(String[] args) {
+		CajaDeAhorro caja1 = new CajaDeAhorro("21222333", 1000);
+		CajaDeAhorro caja2 = new CajaDeAhorro("36454444");
+		caja1.imprimir();
+		caja2.imprimir();
+	}
+}
+
+
+Plantear una clase Persona con los atributos nombre y edad. 
+Implementar un método que retorne si es mayor de edad (almacenar en una constante estática el valor 18 que representa la mayoría de edad)
+
+public class Persona {
+    private static final int MAYOREDAD = 18;
+    private String nombre;
+    private int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void imprimir() {
+        System.out.println(nombre + " " + edad);
+    }
+
+    public String retornarNombre() {
+        return nombre;
+    }
+
+    public boolean esMayor() {
+        if (edad >= MAYOREDAD)
+            return true;
+        else
+            return false;
+    }
+
+    public static void main(String[] args) {
+        Persona persona1 = new Persona("Juan", 23);
+        if (persona1.esMayor())
+            System.out.println("Es mayor de edad " + persona1.retornarNombre());
+        else
+            System.out.println("No es mayor de edad " + persona1.retornarNombre());
+    }
+}
+

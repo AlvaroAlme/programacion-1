@@ -1,0 +1,18 @@
+Crear una ventana de 1024 píxeles por 800 píxeles. Luego no permitir que el operador modifique el tamaño de la ventana. 
+Sabiendo que hacemos visible al JFrame llamando la método setVisible pasando el valor true, 
+existe otro método llamado setResizable que también requiere como parámetro un valor true o false.
+
+import javax.swing.*;
+public class Formulario extends JFrame{
+    Formulario() {
+        setLayout(null);
+    }
+
+    public static void main(String[] ar) {
+        Formulario formulario1=new Formulario();
+        formulario1.setBounds(0,0,1024,800);
+        formulario1.setResizable(false);
+        formulario1.setVisible(true);
+        formulario1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}

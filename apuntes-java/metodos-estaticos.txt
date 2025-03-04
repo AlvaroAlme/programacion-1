@@ -1,0 +1,64 @@
+Implementar una clase llamada Operacion. Definir dos métodos estáticos que permitan sumar y restar dos valores enteros.
+
+public class Operacion {
+
+    public static int sumar(int x1, int x2) {
+        int s = x1 + x2;
+        return s;
+    }
+
+    public static int restar(int x1, int x2) {
+        int r = x1 - x2;
+        return r;
+    }
+}
+
+public class PruebaOperacion {
+    public static void main(String[] ar) {
+        System.out.print("La suma de 2+4 es ");
+        System.out.println(Operacion.sumar(2, 4));
+        System.out.print("La resta de 6-2 es ");
+        System.out.println(Operacion.restar(6, 2));
+    }
+}
+
+
+Declarar una clase Persona con los atributos nombre y edad. Definir un método estático que reciba como parámetros dos objetos de la clase Persona y me retorne la que tiene una edad mayor, si son iguales retorne cualquiera de las dos.
+
+Programa:
+
+public class Persona {
+    private String nombre;
+    private int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void imprimir() {
+        System.out.println(this.nombre + " " + this.edad);
+    }
+
+    public static Persona mayor(Persona per1, Persona per2) {
+        if (per1.edad >= per2.edad)
+            return per1;
+        else
+            return per2;
+    }
+
+}
+
+public class PruebaPersona {
+
+    public static void main(String[] args) {
+        Persona persona1 = new Persona("Juan", 33);
+        Persona persona2 = new Persona("Ana", 50);
+        persona1.imprimir();
+        persona2.imprimir();
+        Persona personaMayor = Persona.mayor(persona1, persona2);
+        System.out.println("Persona con mayor edad");
+        personaMayor.imprimir();
+    }
+
+}

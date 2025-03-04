@@ -1,0 +1,41 @@
+Se desea almacenar los sueldos de operarios. Cuando se ejecuta el programa se debe pedir la cantidad de sueldos a ingresar. Luego crear un arreglo con dicho tamaño.
+Imprimir todos los sueldos ingresados y mostrar el mayor de ellos.
+
+import java.util.Scanner;
+
+public class SueldoEmpleados3 {
+    private Scanner teclado;
+    private int[] sueldos;
+
+    public SueldoEmpleados3() {
+        teclado = new Scanner(System.in);
+        System.out.print("Cuantos sueldos cargará:");
+        int cant;
+        cant = teclado.nextInt();
+        sueldos = new int[cant];
+        for (int f = 0; f < sueldos.length; f++) {
+            System.out.print("Ingrese sueldo:");
+            sueldos[f] = teclado.nextInt();
+        }
+    }
+
+    public void imprimir() {
+        for (int sueldo : sueldos)
+            System.out.println(sueldo);
+
+    }
+
+    public void sueldoMayor() {
+        int mayor = sueldos[0];
+        for (int sueldo : sueldos)
+            if (sueldo > mayor)
+                mayor = sueldo;
+        System.out.println("El sueldo mayor que paga la empresa es " + mayor);
+    }
+
+    public static void main(String[] ar) {
+        SueldoEmpleados3 se = new SueldoEmpleados3();
+        se.imprimir();
+        se.sueldoMayor();
+    }
+}
