@@ -1,0 +1,52 @@
+*Escribe un programa en Java con una clase llamada Semaforo con un atributo color y otro
+duracion que se pueden consultar y modificar. Además habrá un constructor a partir de un color y
+una duración pasados por parámetro. Crea 2 métodos en la clase: uno devolverá un valor
+booleano que valdrá true si el color del semáforo es verde y false si no; el otro método hará lo
+mismo pero para el color rojo.
+*
+*/
+package com.aalmecija.program03.ejer1;
+
+
+/**
+ *
+ * @author aalme
+ */
+public class Semaforo {
+     private String color; //puedes hacer una enumeracion si queires restringir los colores enum String {verde, rojo, amarillo};
+     private int duracion;
+     
+     public String getCoolor(){
+         return this.color;
+     }
+     
+     public void setColor(String color){
+         this.color = color;
+     }
+     
+     public int getDuracion(){
+         return this.duracion;
+     }
+      public void setColor(){
+          this.duracion = duracion;
+      }
+      
+      public Semaforo(String color, int duracion){
+          this.color = color;
+          this.duracion = duracion;
+      }
+      
+      public boolean esVerde(){
+          return this.color.equalsIgnoreCase("verde");
+      }
+      
+      public boolean esRojo(){
+          boolean estaEnRojo;
+          if(color.equalsIgnoreCase("rojo")){
+              estaEnRojo = true;
+          } else {
+              estaEnRojo = false;
+          }
+          return estaEnRojo;
+      } 
+}

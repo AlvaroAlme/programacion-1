@@ -1,0 +1,55 @@
+package com.aalmecija.program03.ejer1;
+
+import java.time.LocalDate;
+
+/**
+ *
+ * @author aalme
+ * Crea un programa en Java con una clase llamada Avion con los atributos numeroVuelo,
+fechaSalida y retraso que solamente se podrán consultar. Además habrá un método que
+devolverá un valor booleano que será true si el avión tiene retraso. Crea 2 objetos de la clase
+Avion, establece sus atributos usando el constructor (1 de ellos tendrá retraso) y muestra su
+numeroVuelo, fechaSalida y si tiene retraso o no. La salida esperada sería como:
+El avión JB3455 con fecha de salida 2024-12-03 tiene retraso.
+El avión XG3789 con fecha de salida 2024-10-10 NO tiene retraso.
+ */
+public class Avion {
+    private String numVuelo;
+    private LocalDate fecha;
+    private int retraso;
+
+    public String getNumVuelo() {
+        return numVuelo;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public int getRetraso() {
+        return retraso;
+    }
+    
+    public boolean llevaRetraso(){
+        return (retraso > 0);
+        
+    }
+    
+    public Avion(String numVuelo, LocalDate fecha, int retraso){
+        this.fecha = fecha;
+        this.numVuelo = numVuelo;
+        this.retraso = retraso;
+    }
+    
+}
+
+public class Ejer1 {
+
+    public static void main(String[] args) {
+        
+    Avion avion1 = new Avion("JB3455", LocalDate.of(2025,12,3), 1);
+    Avion avion2 = new Avion("XG3789", LocalDate.of(2024,10,10), 0);
+
+    System.out.println("El avion " + avion1.getNumVuelo() + " con fecha de salida " + avion1.getFecha() + (avion1.llevaRetraso() ? " lleva retraso" : " NO lleva retraso"));
+    }
+}

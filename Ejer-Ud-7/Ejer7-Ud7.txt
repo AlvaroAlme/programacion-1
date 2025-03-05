@@ -1,0 +1,18 @@
+7.- Escribe un programa en Java con una clase llamada Animal con un método hacerRuido que
+muestre por consola el texto “el animal hace ruido”. Crea una subclase llamada Gato que
+sobreescriba el método hacerRuido y muestre por consola el texto “miau”. 
+
+public class Animal{
+	public void hacerRuido(){
+		System.out.println("el animal hace ruido");
+		
+	}
+	
+}
+	
+	public class Gato extends Animal {
+		@Override 
+		public void hacerRuido(){
+			System.out.println("miau");
+	}
+}

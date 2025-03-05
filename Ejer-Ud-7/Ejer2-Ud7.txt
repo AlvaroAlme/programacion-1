@@ -1,0 +1,44 @@
+/*
+Escribe un programa en Java con una clase llamada Validaciones que tendrá los siguientes
+METODOS ESTATICOS:
+
+
+*/
+package com.aalmecija.program03.ejer1;
+
+/**
+ *
+ * @author aalme
+ */
+public class Validaciones {
+    
+    /*
+    Método que comprueba si la variable numérica entera pasado por parámetro es mayor
+    que 10 y menor o igual que 100. Si no es así, lanzará una excepción indicando el error.
+    */
+    
+    public static void comprobarRango(int numero)throws Exception {
+        if(!(numero > 10 && numero <= 100)){
+            throw new Exception ("El numero no cumple con los requisitos");
+        }
+    }
+    
+    /*
+    • Método que comprueba si una variable de texto pasada por parámetro tiene una longitud
+    mayor que 2 y que NO comienza por el texto “ex”. Si no es así, lanzará una excepción
+    indicando el error.
+    */
+    
+    public static void comprobarTexto(String texto) throws Exception{
+        if(!(texto.length() > 2 && texto.startsWith("ex"))){
+            throw new Exception("El texto no cumple los requisitos");
+        }
+    }
+    
+    /*
+    • Método que comprueba si un variable de tipo carácter es una letra mayúscula. Si no es así,
+    lanzará una excepción indicando el error.
+    */
+    
+    
+}

@@ -1,0 +1,23 @@
+public class Ejer1 {
+
+/*Escribe un programa en Java que te pregunte tu color favorito y que compruebe si el texto
+introducido tiene el texto “verde” (ignorando mayúsculas y minúsculas). Si es así, se mostrará por
+la consola un mensaje diciendo que el lenguaje Java inicialmente se llamaba green. Si no el
+programa acaba. La salida esperada sería algo así:
+Dime tu color favorito: El color VeRdE.
+El lenguaje Java inicialmente se llamaba green.*/
+
+
+public static void main(String[]args){
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Cual es tu color favorito?");
+    String color = scanner.nextLine();
+
+
+    if(color.toLowerCase().contains("verde")){
+        System.out.println("El lenguaje Java incialmente se llamaba green");
+        
+    }
+}
+}

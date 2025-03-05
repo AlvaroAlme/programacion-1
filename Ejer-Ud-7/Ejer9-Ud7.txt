@@ -1,0 +1,28 @@
+Crea un programa en Java con una interfaz llamada Redimensionable que tendrá los métodos
+void redimensionarAncho(int ancho) y void redimensionarAlto(int alto). Crea una clase
+llamada Rectangulo que implemente la interfaz Redimensionable. Para ello la clase Rectangulo
+necesitará un campo alto y otro ancho.
+
+public interface Redimensionable {
+	void redimensionarAncho(int ancho);
+	void redimensionarAlto(int alto);
+}
+
+public class Rectangulo implements Redimensionable{
+	private int ancho;
+	private int alto;
+	
+	public Rectangulo(int ancho, int alto){
+		this.ancho = ancho;
+		this.alto = alto;
+	}
+	
+	@Override
+	public void redimensionarAncho(int ancho){
+		this.ancho = ancho;
+	}
+	
+	@Override
+	public void redimensionarAlto(int alto){
+		this.alto = alto;
+}

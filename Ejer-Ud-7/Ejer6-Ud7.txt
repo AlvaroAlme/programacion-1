@@ -1,0 +1,16 @@
+6. Escribe un método en Java que se le pase 2 números enteros: 1 llamado numElementos y otro
+llamado numeroInicial. El método devolverá un array de números enteros con tantos elementos
+como indique numElementos y estará inicializado con números enteros con el primer elemento
+igual a numeroInicial, el segundo igual a numeroInicial más 1, el tercero igual a númeroInicial + 2
+y así sucesivamente.
+
+public int[] crearArray (int numElementos, int numInicial){
+	int[] array = new int [numElementos];
+	
+	for(int i = 0; i < array.length; i++){
+		array[i] = numInicial + i;
+	}
+	
+	
+	return array;
+}

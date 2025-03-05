@@ -1,0 +1,31 @@
+8. Crea un programa en Java con una clase abstracta llamada Forma2D con 2 métodos
+abstractos llamados calcularArea y calcularPerimetro que devuelvan un valor numérico con
+decimales y que no tengan parámetros. Crea la subclase Circulo que hereda de Forma2D e
+implementa dichos métodos. La clase Circulo necesitará un campo radio para ello. El área de un
+círculo se pueden calcular como PI*radio al cuadrado y el perímetro como 2*PI*radio. El valor
+de PI se obtiene escribiendo Math.PI.
+
+
+public abstract class Forma2D{
+	public abstract double calcularArea();
+	public abstract double calcularPerimetro();
+
+}
+
+public class Circulo extends Forma2D{
+	private double radio;
+	 
+	//public Circulo(double radio){
+		this.radio = radio;
+		
+		
+	@Override
+	public double calcularArea(){
+		 return Math.PI * radio * radio;
+	}
+	
+	@Override
+	public double calcularPerimetro(){
+		return 2 * Math.PI * radio;
+	}
+}

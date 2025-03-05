@@ -1,0 +1,11 @@
+public static boolean vueloValido(String numVuelo){
+	String patronNumVuelo = "[A-Z]{2}[1-4][0-9]{3}[A-Z]";
+	
+	return numVuelo.matches(patronNumVuelo);
+	
+	//Pattern patron = Pattern.compile(patronNumVuelo);
+	//Matcher matcher = patron.matcher(numVuelo);
+	
+	return matcher.matches()
+
+}
